@@ -1,7 +1,20 @@
 # dynamic-swarm-system
 
+***
+
+## About Project
+
+***
+
 ### Project members:
 - Mircea Dumitrache
+
+### Project requirements:
+This program has been tested with the following needs:
+- Operating system: Ubuntu 20.04.2 TLS, Xubuntu
+  - However, the system uses no OS specific libraries or commands.
+- Python version 3.8.5 or later.
+- Standard networking capabilities.
 
 ### Current files included
 The following is a set of files included in the project and a short description
@@ -36,3 +49,11 @@ of them.
     - It contains the 20 most recent message and the ability to dump those messages in a text file
 
 ### Project Use
+
+To simulate swarm intelligence and observe or manipulate it.
+
+***
+
+## Manual
+
+***
