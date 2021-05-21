@@ -245,6 +245,7 @@ def command_line(comp):
 
             if len(comp.all_nodes) == 0:
                 print('No nodes enrolled...')
+                continue
 
             if(cmd[9:] == ''):
                 print('No message found.')

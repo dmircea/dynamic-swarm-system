@@ -21,11 +21,17 @@ class Node:
     #   This is the very first function that gets called once init is complete
     #   Meant to check for any nodes in the "vicinity" and remember them
     def setup_node(self):
-        self.communication.enroll_to_central_comp()
+        try:
+            self.communication.enroll_to_central_comp()
+        except:
+            print('Could not connect to central computer.')
+            return False
         self.communication.start_listen()
         self.listen_thread.start()
         self.listen_to_node_thread.start()
         self.solve_message_thread.start()
+
+        return True
 
     #   Ping the leader and check if it is still up
     def is_leader_up(self):

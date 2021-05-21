@@ -46,18 +46,35 @@ def main():
 
         if(message == 'help'):
             #   Print out help stuff than continue
+            print('\n')
+            print('Any message except commands will be assumed to be a name. A node will be created,'
+                'based on that name and will be setup. Please be aware that the set up includes',
+                'enrollment to the Central Computer.')
+            print('Messages are limited to be up to 20 characters and more than 0 characters.')
+            print('Messages must NOT include spaces the must all be one word.\n')
+            print('clear --> will clear the screen')
+            print('quit --> will quit out of this program and wait on the nodes to finish')
+            print('quit_all --> will send a quit signal to the central computer\n')
+            print('While it is allowed, naming a node after a specific command used by the',
+                'Central Computer may have uninteded consequences.')
+            print('\n')
             continue
         elif(message == 'quit'):
+            print('Quitting the main component.')
             break
-        elif(message == 'quit all'):
+        elif(message == 'quit_all'):
+            print('Sending shutdown signal to central computer.')
+            #   Print out help stuff than continue
             quit_sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            quit_sock.connect(('localhost',8000))
+            quit_sock.connect(('localhost',8001))
             quit_sock.sendall(b'quit')
             break
 
         n = Node.Node(message)
-        n.setup_node()
-        all_nodes.append(n)
+        if(n.setup_node() == False):
+            print('Something happened and the node was not added...')
+        else:
+            all_nodes.append(n)
 
 
     #   After while loop is broken out of
